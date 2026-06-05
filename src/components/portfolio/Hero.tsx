@@ -114,7 +114,7 @@ export function Hero() {
                 alt="Sakthisree J portrait"
                 width={1024}
                 height={1024}
-                className="w-full aspect-square object-cover"
+                className="w-full aspect-square object-cover object-[center_30%]"
               />
             </div>
             {/* floating chips */}
