@@ -70,7 +70,7 @@ export function Hero() {
               <ArrowRight size={16} className="transition-transform group-hover:translate-x-1" />
             </a>
             <a
-  href="https://drive.google.com/file/d/1EiPUdWS7IKU_P29Vd4DYg7Be_TnxPxwX/view"
+  href="https://drive.google.com/file/d/1Tv26TCWN6EWH0oGSlC6AC0OK02p-lcdO/view?usp=drive_link"
   target="_blank"
   rel="noopener noreferrer"
   className="inline-flex items-center gap-2 rounded-full glass px-5 py-3 text-sm"

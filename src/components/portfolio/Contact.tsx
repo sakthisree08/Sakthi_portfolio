@@ -50,7 +50,7 @@ export function Contact() {
     {
       icon: FileText,
       label: "Resume",
-      href: "https://drive.google.com/file/d/1EiPUdWS7IKU_P29Vd4DYg7Be_TnxPxwX/view",
+      href: "https://drive.google.com/file/d/1Tv26TCWN6EWH0oGSlC6AC0OK02p-lcdO/view?usp=drive_link",
     },
   ].map((s) => (
     <a
