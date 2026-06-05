@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { ArrowRight, FileText, Mail } from "lucide-react";
-const HERO_IMG = "https://i.postimg.cc/W4ZzSyJc/1780506856095.jpg";
+import HeroImage from "../../assets/sakthi.png";
+const HERO_IMG = HeroImage;
 
 const roles = [
   "Software Engineer",
@@ -117,7 +118,8 @@ export function Hero() {
               />
             </div>
             {/* floating chips */}
-            <div className="absolute -left-6 top-10 glass rounded-2xl px-3 py-2 text-xs font-mono animate-float">
+            
+            <div className="absolute -left-2 top-32 glass rounded-2xl px-3 py-2 text-xs font-mono animate-float">
               <span className="text-cyan">{"{ "}</span>ai: "ML"<span className="text-cyan">{" }"}</span>
             </div>
             <div className="absolute -right-4 top-1/3 glass rounded-2xl px-3 py-2 text-xs font-mono animate-float-slow">
@@ -129,12 +131,6 @@ export function Hero() {
             <div className="absolute -right-6 bottom-20 glass rounded-2xl px-3 py-2 text-xs font-mono animate-float-slow" style={{ animationDelay: "-2s" }}>
               <span className="text-coral">✦</span> Creative Thinker
             </div>
-            <div
-  className="absolute right-2 top-16 glass rounded-2xl px-3 py-2 text-xs font-mono animate-float"
-  style={{ animationDelay: "-6s" }}
->
-  <span className="text-coral">🏆</span> Competitive Programmer
-</div>
             <div className="absolute left-1/2 -translate-x-1/2 -top-4 glass rounded-2xl px-3 py-2 text-xs font-mono animate-float" style={{ animationDelay: "-1s" }}>
               <span className="text-cyan">◆</span> Problem Solver
             </div>
@@ -144,9 +140,15 @@ export function Hero() {
             <div className="absolute -right-8 bottom-4 glass rounded-2xl px-3 py-2 text-xs font-mono animate-float" style={{ animationDelay: "-5s" }}>
               <span className="text-cyan">?</span> Curious Learner
             </div>
-            <div className="absolute left-1/2 -translate-x-1/2 -bottom-4 glass rounded-2xl px-3 py-2 text-xs font-mono animate-float-slow" style={{ animationDelay: "-2.5s" }}>
+            <div className="absolute left-1/4 -translate-x-1/2 -bottom-8 glass rounded-2xl px-3 py-2 text-xs font-mono animate-float-slow" style={{ animationDelay: "-2.5s" }}>
               <span className="text-gradient">⟨/⟩</span> Full Stack Explorer
             </div>
+          <div
+  className="absolute -left-10 top-10 glass rounded-2xl px-3 py-2 text-xs font-mono animate-float"
+  style={{ animationDelay: "-6s" }}
+>
+  <span className="text-coral">🏆</span> Competitive Programmer
+</div>
           </div>
         </div>
       </div>
