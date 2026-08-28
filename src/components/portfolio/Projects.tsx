@@ -17,7 +17,11 @@ const projects: P[] = [
     tag: "Study Room Booking System",
     desc: "Scalable full-stack web application for managing study room reservations with booking, cancellation, rescheduling, and real-time slot validation.",
     tech: ["React", "Spring Boot", "PostgreSQL", "REST API"],
-    bullets: ["Real-time booking", "Double-booking prevention", "Schedule management"],
+    bullets: [
+      "Real-time booking",
+      "Double-booking prevention",
+      "Schedule management",
+    ],
     category: "Full-Stack",
     github: "https://github.com/sakthisree08/study-room-booking",
   },
@@ -26,107 +30,162 @@ const projects: P[] = [
     tag: "Recruitment Safety System",
     desc: "Machine learning-powered recruitment screening platform that detects fraudulent job postings using NLP, feature engineering, and predictive analytics.",
     tech: ["Python", "Scikit-Learn", "NLP", "Machine Learning"],
-    bullets: ["Fraud classification", "NLP-based analysis", "High detection accuracy"],
+    bullets: [
+      "Fraud classification",
+      "NLP-based analysis",
+      "High detection accuracy",
+    ],
     category: "AI/ML",
     github: "https://github.com/sakthisree08/AI-Job-Fraud-Detection",
   },
   {
     name: "Personalized Wellness App",
     tag: "Smart Lifestyle Monitoring Platform",
-    desc: "Engineered a wellness platform for monitoring daily lifestyle habits and routine activities. Integrated a Python-based recommendation engine with Flask to generate adaptive wellness suggestions based on user behavior patterns.",
+    desc: "Wellness platform for monitoring lifestyle habits and generating adaptive recommendations based on user behavior patterns.",
     tech: ["HTML", "CSS", "JavaScript", "Python", "Flask", "PostgreSQL"],
-    bullets: ["Personalized recommendations", "Habit tracking dashboard", "Wellness analytics"],
+    bullets: [
+      "Personalized recommendations",
+      "Habit tracking dashboard",
+      "Wellness analytics",
+    ],
     category: "Full-Stack",
     github: "https://github.com/sakthisree08/Personalized_Wellness_website",
   },
   {
     name: "Rentoby",
     tag: "Furniture Rental & Purchase Platform",
-    desc: "Modern furniture rental and buying platform featuring categorized products, wishlist management, cart functionality, and responsive user experience.",
+    desc: "Modern furniture rental and buying platform featuring categorized products, wishlist management, cart functionality, and responsive design.",
     tech: ["HTML", "CSS", "JavaScript"],
-    bullets: ["Furniture categorization", "Cart & wishlist system", "Rental and purchase options"],
+    bullets: [
+      "Furniture categorization",
+      "Cart & wishlist system",
+      "Rental and purchase options",
+    ],
     category: "Web",
     github: "https://github.com/sakthisree08/RentoBy",
   },
 ];
 
-
 const filters = ["All", "AI/ML", "Full-Stack", "Web"] as const;
 
 export function Projects() {
-  const [filter, setFilter] = useState<(typeof filters)[number]>("All");
-  const shown = projects.filter((p) => filter === "All" || p.category === filter);
+  const [filter, setFilter] =
+    useState<(typeof filters)[number]>("All");
+
+  const shown = projects.filter(
+    (project) =>
+      filter === "All" || project.category === filter
+  );
 
   return (
-    <section id="projects" className="section-pad relative">
-      <div className="mx-auto max-w-7xl px-4 md:px-8">
-        <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-12 reveal">
-          <div className="max-w-2xl">
-            <p className="text-xs uppercase tracking-[0.3em] text-coral mb-4">Selected Work</p>
-            <h2 className="font-serif text-4xl md:text-6xl leading-tight">
-              Featured <span className="text-gradient">Projects</span>
+    <section
+      id="projects"
+      className="section-pad relative border-b border-white/10"
+    >
+      <div className="mx-auto max-w-7xl px-5 md:px-10">
+
+        {/* Header */}
+        <div className="reveal mb-14 grid gap-8 md:grid-cols-12">
+          <div className="md:col-span-6">
+            <div className="flex items-center gap-3 text-xs uppercase tracking-[0.2em] text-accent">
+              <span className="h-px w-8 bg-accent" />
+              Selected Work
+            </div>
+
+            <h2 className="mt-6 text-4xl font-semibold leading-[1.05] tracking-[-0.03em] md:text-6xl">
+              Featured
+              <span className="block text-muted-foreground">
+                Projects
+              </span>
             </h2>
           </div>
-          <div className="flex flex-wrap gap-2">
-            {filters.map((f) => (
+
+          {/* Filters */}
+          <div className="flex flex-wrap items-end gap-2 md:col-span-6 md:justify-end">
+            {filters.map((item) => (
               <button
-                key={f}
-                onClick={() => setFilter(f)}
-                className={`rounded-full px-4 py-2 text-xs transition border ${
-                  filter === f
-                    ? "bg-primary text-primary-foreground border-transparent"
-                    : "glass border-border text-muted-foreground hover:text-foreground"
+                key={item}
+                onClick={() => setFilter(item)}
+                className={`border px-4 py-2 text-xs uppercase tracking-[0.12em] transition-all ${
+                  filter === item
+                    ? "border-accent bg-accent text-background"
+                    : "border-white/10 text-muted-foreground hover:border-white/30 hover:text-foreground"
                 }`}
               >
-                {f}
+                {item}
               </button>
             ))}
           </div>
         </div>
 
-        <div className="grid md:grid-cols-2 gap-6 items-stretch">
-          {shown.map((p, i) => (
+        {/* Projects */}
+        <div className="grid gap-3 md:grid-cols-2">
+          {shown.map((project, index) => (
             <article
-              key={p.name}
-              className="group relative overflow-hidden rounded-3xl glass-strong p-7 transition-all duration-500 h-full flex flex-col hover:-translate-y-1 hover:bg-white/[0.06] hover:shadow-[0_0_40px_-10px_hsl(var(--primary)/0.5)]"
-              style={{ transitionDelay: `${i * 60}ms` }}
+              key={project.name}
+              className="group relative flex min-h-[390px] flex-col bg-background p-6 transition-all duration-300 hover:bg-card hover:border-accent/40 hover:shadow-[0_0_35px_-12px_hsl(var(--accent)/0.8)] md:p-8"
             >
-              <div
-                aria-hidden
-                className="absolute -top-24 -right-24 h-64 w-64 rounded-full bg-gradient-to-br from-coral/20 to-cyan/20 blur-2xl opacity-0 group-hover:opacity-100 transition duration-700"
-              />
-
-              <div className="relative flex flex-col flex-1">
-                <div className="flex items-start justify-between gap-4 mb-4">
-                  <div>
-                    <div className="text-xs font-mono text-cyan">{p.category}</div>
-                    <h3 className="mt-1 font-serif text-3xl">{p.name}</h3>
-                    <div className="text-sm text-muted-foreground">{p.tag}</div>
-                  </div>
-                  <div className="flex gap-2 opacity-0 group-hover:opacity-100 transition">
-                    <a aria-label="GitHub" href={p.github} target="_blank" rel="noopener noreferrer" className="h-9 w-9 inline-flex items-center justify-center rounded-full bg-primary text-primary-foreground hover:opacity-90">
-                      <Github size={15} />
-                    </a>
-                  </div>
-                </div>
-
-                <p className="text-sm text-muted-foreground leading-relaxed">{p.desc}</p>
-
-                <ul className="mt-5 grid grid-cols-1 sm:grid-cols-3 gap-2">
-                  {p.bullets.map((b) => (
-                    <li key={b} className="rounded-xl bg-white/5 px-3 py-2 text-xs text-foreground/80">
-                      {b}
-                    </li>
-                  ))}
-                </ul>
-
-                <div className="mt-5 flex flex-wrap gap-2">
-                  {p.tech.map((t) => (
-                    <span key={t} className="text-xs rounded-full border border-border px-2.5 py-1 text-muted-foreground">
-                      {t}
+              {/* Top */}
+              <div className="flex items-start justify-between gap-5">
+                <div>
+                  <div className="mb-4 flex items-center gap-3">
+                    <span className="font-mono text-xs text-accent">
+                      0{index + 1}
                     </span>
-                  ))}
+
+                    <span className="text-[10px] uppercase tracking-[0.16em] text-muted-foreground">
+                      {project.category}
+                    </span>
+                  </div>
+
+                  <h3 className="text-2xl font-semibold tracking-tight md:text-3xl">
+                    {project.name}
+                  </h3>
+
+                  <p className="mt-2 text-sm text-accent">
+                    {project.tag}
+                  </p>
                 </div>
+
+                <a
+                  aria-label={`View ${project.name} on GitHub`}
+                  href={project.github}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="flex h-9 w-9 flex-none items-center justify-center border border-white/10 text-muted-foreground transition-all hover:border-accent hover:text-accent"
+                >
+                  <Github size={15} />
+                </a>
+              </div>
+
+              {/* Description */}
+              <p className="mt-7 max-w-xl text-sm leading-7 text-muted-foreground">
+                {project.desc}
+              </p>
+
+              {/* Highlights */}
+              <div className="mt-7 grid gap-2 sm:grid-cols-3">
+                {project.bullets.map((bullet) => (
+                  <div
+                    key={bullet}
+                    className="border border-white/10 p-3 text-xs leading-5 text-muted-foreground"
+                  >
+                    <span className="mb-2 block h-1 w-1 bg-accent" />
+                    {bullet}
+                  </div>
+                ))}
+              </div>
+
+              {/* Technologies */}
+              <div className="mt-auto flex flex-wrap gap-2 pt-8">
+                {project.tech.map((technology) => (
+                  <span
+                    key={technology}
+                    className="border border-white/10 px-2.5 py-1 text-[10px] uppercase tracking-[0.1em] text-muted-foreground"
+                  >
+                    {technology}
+                  </span>
+                ))}
               </div>
             </article>
           ))}

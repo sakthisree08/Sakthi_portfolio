@@ -1,164 +1,188 @@
 import { useEffect, useState } from "react";
-import { ArrowRight, FileText, Mail } from "lucide-react";
+import { ArrowUpRight, FileText, Mail } from "lucide-react";
 import HeroImage from "../../assets/sakthi.png";
-const HERO_IMG = HeroImage;
 
 const roles = [
   "Software Engineer",
+  "AI & ML Enthusiast",
   "Full Stack Explorer",
-  "Creative Thinker",
   "Problem Solver",
   "Continuous Learner",
-  "AI & ML Enthusiast",
-  "Cybersecurity Enthusiast",
 ];
 
-const badges = ["Java", "Python", "AI", "ML", "Cybersecurity", "DSA", "TensorFlow", "React", "Flask", "REST API", "Spring Boot", "C"];
+const badges = [
+  "Java",
+  "Python",
+  "AI",
+  "ML",
+  "Cybersecurity",
+  "DSA",
+  "TensorFlow",
+  "React",
+  "Spring Boot",
+  "C",
+];
 
 export function Hero() {
   const [text, setText] = useState("");
   const [roleIdx, setRoleIdx] = useState(0);
-  const [del, setDel] = useState(false);
+  const [deleting, setDeleting] = useState(false);
 
   useEffect(() => {
     const current = roles[roleIdx];
-    const speed = del ? 40 : 80;
-    const t = setTimeout(() => {
-      if (!del) {
+    const speed = deleting ? 45 : 85;
+
+    const timer = setTimeout(() => {
+      if (!deleting) {
         const next = current.slice(0, text.length + 1);
         setText(next);
-        if (next === current) setTimeout(() => setDel(true), 1400);
+
+        if (next === current) {
+          setTimeout(() => setDeleting(true), 1200);
+        }
       } else {
         const next = current.slice(0, text.length - 1);
         setText(next);
+
         if (next === "") {
-          setDel(false);
-          setRoleIdx((i) => (i + 1) % roles.length);
+          setDeleting(false);
+          setRoleIdx((index) => (index + 1) % roles.length);
         }
       }
     }, speed);
-    return () => clearTimeout(t);
-  }, [text, del, roleIdx]);
+
+    return () => clearTimeout(timer);
+  }, [text, deleting, roleIdx]);
 
   return (
-    <section id="home" className="relative min-h-screen overflow-hidden pt-32 pb-20">
-      {/* Floating gradient blobs */}
-      <div aria-hidden className="absolute -top-32 -left-20 h-[520px] w-[520px] rounded-full bg-coral/20 blur-3xl animate-blob" />
-      <div aria-hidden className="absolute top-40 -right-32 h-[460px] w-[460px] rounded-full bg-cyan/20 blur-3xl animate-blob" style={{ animationDelay: "-6s" }} />
-      <div aria-hidden className="absolute inset-0 grid-noise opacity-30 [mask-image:radial-gradient(ellipse_at_center,black,transparent_70%)]" />
+    <section
+      id="home"
+      className="relative min-h-screen overflow-hidden border-b border-white/10 pt-32 pb-16"
+    >
+      <div className="mx-auto max-w-7xl px-5 md:px-10">
+        <div className="grid min-h-[75vh] items-center gap-12 lg:grid-cols-12">
+          
+          {/* Left */}
+          <div className="lg:col-span-7">
+            <div className="mb-8 flex items-center gap-3 text-xs uppercase tracking-[0.2em] text-muted-foreground">
+              <span className="h-px w-10 bg-accent" />
+              Portfolio / 2026
+            </div>
 
-      <div className="relative mx-auto max-w-7xl px-4 md:px-8 grid lg:grid-cols-12 gap-10 items-center">
-        {/* Left: copy */}
-        <div className="lg:col-span-7 space-y-8 animate-fade-up">
-          <div className="inline-flex items-center gap-2 rounded-full glass px-3 py-1.5 text-xs text-muted-foreground">
-            <span className="inline-block h-1.5 w-1.5 rounded-full bg-emerald-400 animate-pulse" />
-            Open to Software / AI / ML / Cybersecurity roles
+            <h1 className="max-w-5xl text-5xl font-semibold leading-[0.95] tracking-[-0.04em] md:text-7xl lg:text-8xl">
+              Hi, I'm{" "}
+              <span className="text-accent">Sakthisree J</span>
+            </h1>
+
+            <div className="mt-8 flex items-center gap-3 font-mono text-base text-muted-foreground md:text-xl">
+              <span className="text-accent">&gt;</span>
+              <span>{text}</span>
+              <span className="h-5 w-px animate-pulse bg-accent" />
+            </div>
+
+            <p className="mt-8 max-w-2xl text-base leading-7 text-muted-foreground md:text-lg">
+              Information Technology student passionate about building
+              intelligent, scalable and practical solutions across software,
+              AI, machine learning and cybersecurity.
+            </p>
+
+            {/* Buttons */}
+            <div className="mt-10 flex flex-wrap gap-3">
+              <a
+                href="#projects"
+                className="group inline-flex items-center gap-2 bg-foreground px-6 py-3 text-sm font-medium text-background transition-all hover:bg-accent"
+              >
+                View Projects
+                <ArrowUpRight
+                  size={16}
+                  className="transition-transform group-hover:translate-x-1 group-hover:-translate-y-1"
+                />
+              </a>
+
+              <a
+                href="https://drive.google.com/file/d/1BO1kHlvLf6TPopE-DNK7vnyL9A72iFLj/view?usp=drive_link"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center gap-2 border border-white/15 px-6 py-3 text-sm text-foreground transition-all hover:border-accent hover:text-accent"
+              >
+                <FileText size={16} />
+                Resume
+              </a>
+
+              <a
+                href="#contact"
+                className="inline-flex items-center gap-2 border border-white/15 px-6 py-3 text-sm text-foreground transition-all hover:border-accent hover:text-accent"
+              >
+                <Mail size={16} />
+                Contact
+              </a>
+            </div>
+
+            {/* Stats */}
+            <div className="mt-16 grid grid-cols-2 border-y border-white/10 md:grid-cols-4">
+              {[
+                ["420+", "LeetCode"],
+                ["4+", "Projects"],
+                ["AI / ML", "Focus"],
+                ["Cyber", "Experience"],
+              ].map(([value, label]) => (
+                <div
+                  key={label}
+                  className="border-r border-white/10 px-4 py-6 last:border-r-0"
+                >
+                  <div className="text-2xl font-semibold tracking-tight md:text-3xl">
+                    {value}
+                  </div>
+                  <div className="mt-2 text-[10px] uppercase tracking-[0.15em] text-muted-foreground">
+                    {label}
+                  </div>
+                </div>
+              ))}
+            </div>
           </div>
 
-          <h1 className="font-serif text-5xl md:text-7xl lg:text-8xl leading-[0.95] tracking-tight">
-            Hi, I'm <span className="text-gradient">Sakthisree J</span>
-          </h1>
+          {/* Right */}
+          <div className="relative lg:col-span-5">
+            <div className="relative mx-auto max-w-md">
+              <div className="absolute -inset-3 border border-accent/20" />
 
-          <div className="text-xl md:text-2xl text-muted-foreground font-mono h-8">
-            <span className="text-foreground">&gt;</span> {text}
-            <span className="ml-0.5 inline-block w-0.5 h-6 align-middle bg-coral animate-pulse" />
-          </div>
+              <div className="relative overflow-hidden border border-white/15 bg-card p-2">
+                <img
+                  src={HeroImage}
+                  alt="Sakthisree J portrait"
+                  width={1024}
+                  height={1024}
+                  className="aspect-square w-full object-cover object-[center_30%] grayscale-[15%]"
+                />
 
-
-          <div className="flex flex-wrap gap-3">
-            <a href="#projects" className="group inline-flex items-center gap-2 rounded-full bg-primary px-5 py-3 text-sm font-medium text-primary-foreground hover:opacity-90 transition">
-              View Projects
-              <ArrowRight size={16} className="transition-transform group-hover:translate-x-1" />
-            </a>
-            <a
-  href="https://drive.google.com/file/d/1Tv26TCWN6EWH0oGSlC6AC0OK02p-lcdO/view?usp=drive_link"
-  target="_blank"
-  rel="noopener noreferrer"
-  className="inline-flex items-center gap-2 rounded-full glass px-5 py-3 text-sm"
->
-  <FileText size={16} />
-  Resume
-</a>
-           <a
-  href="#contact"
-  className="inline-flex items-center gap-2 rounded-full glass px-5 py-3 text-sm"
->
-  <Mail size={16} />
-  Contact Me
-</a>
-          </div>
-
-          {/* Stats */}
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-3 pt-6">
-            {[
-              { k: "350+", v: "LeetCode Solved" },
-              { k: "4+", v: "Major Projects" },
-              { k: "> AI & ML Enthusiast", v: "Enthusiast" },
-              { k: "Cyber", v: "Intern" },
-            ].map((s) => (
-              <div key={s.v} className="glass rounded-2xl p-4">
-                <div className="text-2xl md:text-3xl font-serif text-gradient">{s.k}</div>
-                <div className="text-xs text-muted-foreground mt-1">{s.v}</div>
+                <div className="absolute bottom-5 left-5 border border-white/15 bg-black/80 px-4 py-3 backdrop-blur-md">
+                  <div className="text-[10px] uppercase tracking-[0.18em] text-muted-foreground">
+                    Currently
+                  </div>
+                  <div className="mt-1 text-sm font-medium">
+                    Building with AI
+                  </div>
+                </div>
               </div>
-            ))}
-          </div>
-        </div>
 
-        {/* Right: portrait */}
-        <div className="lg:col-span-5 relative animate-fade-up" style={{ animationDelay: "120ms" }}>
-          <div className="relative mx-auto max-w-md">
-            <div aria-hidden className="absolute -inset-6 rounded-[2.5rem] bg-gradient-to-tr from-coral/40 via-transparent to-cyan/40 blur-2xl opacity-70" />
-            <div className="relative overflow-hidden rounded-[2rem] glass-strong p-2">
-              <img
-                src={HERO_IMG}
-                alt="Sakthisree J portrait"
-                width={1024}
-                height={1024}
-                className="w-full aspect-square object-cover object-[center_30%]"
-              />
+              <div className="absolute -right-5 -top-5 border border-accent/40 bg-black px-3 py-2 font-mono text-xs text-accent">
+                {"<"} / {">"}
+              </div>
             </div>
-            {/* floating chips */}
-            
-            <div className="absolute -left-2 top-32 glass rounded-2xl px-3 py-2 text-xs font-mono animate-float">
-              <span className="text-cyan">{"{ "}</span>ai: "ML"<span className="text-cyan">{" }"}</span>
-            </div>
-            <div className="absolute -right-4 top-1/3 glass rounded-2xl px-3 py-2 text-xs font-mono animate-float-slow">
-              <span className="text-coral">●</span> Detection Engineer
-            </div>
-            <div className="absolute -left-4 bottom-10 glass rounded-2xl px-3 py-2 text-xs font-mono animate-float" style={{ animationDelay: "-3s" }}>
-              CGPA <span className="text-gradient">8.11</span>
-            </div>
-            <div className="absolute -right-6 bottom-20 glass rounded-2xl px-3 py-2 text-xs font-mono animate-float-slow" style={{ animationDelay: "-2s" }}>
-              <span className="text-coral">✦</span> Creative Thinker
-            </div>
-            <div className="absolute left-1/2 -translate-x-1/2 -top-4 glass rounded-2xl px-3 py-2 text-xs font-mono animate-float" style={{ animationDelay: "-1s" }}>
-              <span className="text-cyan">◆</span> Problem Solver
-            </div>
-            <div className="absolute -left-8 top-1/2 glass rounded-2xl px-3 py-2 text-xs font-mono animate-float-slow" style={{ animationDelay: "-4s" }}>
-              <span className="text-coral">❋</span> Mandala Artist
-            </div>
-            <div className="absolute -right-8 bottom-4 glass rounded-2xl px-3 py-2 text-xs font-mono animate-float" style={{ animationDelay: "-5s" }}>
-              <span className="text-cyan">?</span> Curious Learner
-            </div>
-            <div className="absolute left-1/4 -translate-x-1/2 -bottom-8 glass rounded-2xl px-3 py-2 text-xs font-mono animate-float-slow" style={{ animationDelay: "-2.5s" }}>
-              <span className="text-gradient">⟨/⟩</span> Full Stack Explorer
-            </div>
-          <div
-  className="absolute -left-10 top-10 glass rounded-2xl px-3 py-2 text-xs font-mono animate-float"
-  style={{ animationDelay: "-6s" }}
->
-  <span className="text-coral">🏆</span> Competitive Programmer
-</div>
           </div>
         </div>
       </div>
 
-      {/* Marquee of tech badges */}
-      <div className="relative mt-20 overflow-hidden border-y border-border/60 py-5">
+      {/* Technology strip */}
+      <div className="mt-10 overflow-hidden border-y border-white/10 py-5">
         <div className="flex w-max animate-marquee gap-12 whitespace-nowrap">
-          {[...badges, ...badges, ...badges].map((b, i) => (
-            <span key={i} className="text-2xl md:text-3xl font-serif text-muted-foreground/70">
-              {b} <span className="text-coral mx-3">✦</span>
+          {[...badges, ...badges].map((badge, index) => (
+            <span
+              key={index}
+              className="text-xs font-medium uppercase tracking-[0.18em] text-muted-foreground"
+            >
+              {badge}
+              <span className="ml-12 text-accent">✦</span>
             </span>
           ))}
         </div>
