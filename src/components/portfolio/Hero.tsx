@@ -100,7 +100,7 @@ export function Hero() {
               </a>
 
               <a
-                href="https://drive.google.com/file/d/1BO1kHlvLf6TPopE-DNK7vnyL9A72iFLj/view?usp=drive_link"
+                href="https://drive.google.com/file/d/1ondgmKJwY8ecYwADAAqkuJgtZ2zKii9B/view?usp=drive_link"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="inline-flex items-center gap-2 border border-white/15 px-6 py-3 text-sm text-foreground transition-all hover:border-accent hover:text-accent"

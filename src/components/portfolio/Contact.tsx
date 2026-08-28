@@ -83,7 +83,7 @@ export function Contact() {
     {
       icon: FileText,
       label: "Resume",
-      href: "https://drive.google.com/file/d/1BO1kHlvLf6TPopE-DNK7vnyL9A72iFLj/view?usp=drive_link",
+      href: "https://drive.google.com/file/d/1ondgmKJwY8ecYwADAAqkuJgtZ2zKii9B/view?usp=drive_link",
     },
   ];
 
